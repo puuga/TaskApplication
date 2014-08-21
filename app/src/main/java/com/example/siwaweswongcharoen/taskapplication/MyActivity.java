@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MyActivity extends Activity {
@@ -27,8 +28,11 @@ public class MyActivity extends Activity {
     }
 
     public void runTask(View view) {
-        if (!etNumber.getText().toString().equals("")) {
-            new LongOperation().execute(Integer.parseInt(etNumber.getText().toString()));
+        String input = etNumber.getText().toString();
+        if (!input.equals("")) {
+            new LongOperation().execute(Integer.parseInt(input));
+        } else {
+            Toast.makeText(getApplicationContext(), "Has to be number", Toast.LENGTH_SHORT).show();
         }
     }
 
